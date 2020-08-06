@@ -37,10 +37,10 @@ class BooksController < ApplicationController
 
   def show
     if user_signed_in?
-    @book = Book.find(params[:id])
+    @books = Book.find(params[:id])
     # @user = User.find(params[:id])
     # @book.user_id = current_user.id
-    # @book = Book.new
+    @book = Book.new
 
     else
       redirect_to new_user_session_path
