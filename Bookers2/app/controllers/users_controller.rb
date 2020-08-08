@@ -7,12 +7,12 @@ class UsersController < ApplicationController
     # @user = User.find(params[:id])
     # ↑これ違う可能性高い。:idじゃなくて固定で自分のでいいかも
     # @user = current_user.find
-    else 
+    else
       redirect_to new_user_session_path
     end
   end
 
-  
+
   def show
     if user_signed_in?
 
@@ -21,14 +21,14 @@ class UsersController < ApplicationController
     @books = @user.books
     @book = Book.new
 
-    else 
+    else
       redirect_to new_user_session_path
     end
   end
 
   def edit
-    # @user = User.find(params[:id]) 
-  
+    # @user = User.find(params[:id])
+
     # if current_user.id != @user.id
     #   redirect_to users_path
     # elsif user_signed_in? == false
@@ -37,8 +37,8 @@ class UsersController < ApplicationController
 
     # end
 
-    if @user = User.find(params[:id]) 
-    
+    if @user = User.find(params[:id])
+
       if user_signed_in? == true
         if current_user.id != @user.id
           redirect_to user_path(current_user)
@@ -56,8 +56,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   if  @user.update(user_params)
     redirect_to user_path , notice: 'Your information was successfully updated.'
-  else 
-    
+  else
+
     render "edit"
   end
   end

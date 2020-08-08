@@ -49,7 +49,7 @@ class BooksController < ApplicationController
 
   def edit
 
-    if @book = Book.find(params[:id])
+    @book = Book.find(params[:id])
 
       # if current_user.id != @book.user_id.to_i
       #   redirect_to books_path
@@ -63,11 +63,7 @@ class BooksController < ApplicationController
       else
         redirect_to new_user_session_path
       end
-
-    else
-      redirect_to new_user_session_path
-    end
-  end
+end
 
 
   def update
@@ -77,7 +73,6 @@ class BooksController < ApplicationController
       # redirect_to "/books/:id"
       redirect_to book_path , notice: 'Book was successfully updated.'
     else
-      @book = Book.find(params[:id])
       render "edit"
     end
   end
